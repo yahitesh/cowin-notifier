@@ -1,3 +1,9 @@
+/* Apache License 2.0
+ * A permissive license whose main conditions require preservation of copyright and license notices.
+ * Contributors provide an express grant of patent rights. 
+ * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+ */
+
 package com.yahitesh.config;
 
 import java.io.BufferedReader;
@@ -13,22 +19,25 @@ import org.springframework.stereotype.Component;
 
 import com.yahitesh.model.Notification;
 
+/**
+ * @author yaHitesh
+ * @since 1.0.0
+ */
 @Component
 public class NotificationHolder {
+	
 	private static final String LOCK = "LOCK";
 
 	public void saveRecord(Notification notification) {
 		try {
 			synchronized (LOCK) {
 				FileWriter writer = new FileWriter(new File("src/main/resources/notification.txt"), true);
-
 				String str = notification.getEmail() + "!" + notification.getPincodes() + "!"
 						+ notification.getNotify();
 				writer.write(str);
 				writer.write(System.getProperty("line.separator"));
 				writer.flush();
 				writer.close();
-				System.out.println("Successfully wrote to the file.");
 			}
 		} catch (IOException e) {
 			System.out.println("An error occurred while writeInAFile");
@@ -48,7 +57,7 @@ public class NotificationHolder {
 						String str = notification.getEmail() + "!" + notification.getPincodes() + "!"
 								+ notification.getNotify();
 						sb.append(str);
-					}else {
+					} else {
 						sb.append(line);
 					}
 					sb.append(System.getProperty("line.separator"));
@@ -58,7 +67,6 @@ public class NotificationHolder {
 				writer.flush();
 				writer.close();
 
-				System.out.println("Successfully update to the file.");
 			}
 		} catch (IOException e) {
 			System.out.println("An error occurred while writeInAFile");
@@ -87,27 +95,19 @@ public class NotificationHolder {
 
 		return list;
 	}
-	
+
 	public static void clearTheFile() {
-        FileWriter fwOb;
+		FileWriter fwOb;
 		try {
 			fwOb = new FileWriter("src/main/resources/notification.txt", false);
 			PrintWriter pwOb = new PrintWriter(fwOb, false);
-	        pwOb.flush();
-	        pwOb.close();
-	        fwOb.close();
+			pwOb.flush();
+			pwOb.close();
+			fwOb.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("An error occurred while clearTheFile");
 			e.printStackTrace();
-		} 
-        
-    }
-
-	public static void main(String[] args) {
-		Notification notification = new Notification();
-		notification.setEmail("hiteshyadav1992@gmail.com");
-		notification.setPincodes("1111");
-		notification.setNotify("Y");
-		new NotificationHolder().updateRecord(notification);
+		}
 	}
+
 }

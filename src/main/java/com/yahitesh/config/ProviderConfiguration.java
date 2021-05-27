@@ -1,55 +1,66 @@
+/* Apache License 2.0
+ * A permissive license whose main conditions require preservation of copyright and license notices.
+ * Contributors provide an express grant of patent rights. 
+ * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+ */
+
 package com.yahitesh.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author yaHitesh
+ * @since 1.0.0
+ */
 @Configuration
 @ConfigurationProperties(prefix = "email")
 public class ProviderConfiguration {
 
-    private String host;
-    private Integer port;
-    private String username;
-    private String password;
-    private Boolean debug;
+	private String host;
+	private Integer port;
+	private String username;
+	private String password;
+	private Boolean debug;
 
-    public String getHost() {
-        return host;
-    }
+	public String getHost() {
+		return host;
+	}
 
-    public void setHost(String host) {
-        this.host = host;
-    }
+	public void setHost(String host) {
+		this.host = host;
+	}
 
-    public Integer getPort() {
-        return port;
-    }
+	public Integer getPort() {
+		return port;
+	}
 
-    public void setPort(Integer port) {
-        this.port = port;
-    }
+	public void setPort(Integer port) {
+		this.port = port;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public Boolean getDebug() {
-        return debug;
-    }
+	public Boolean getDebug() {
+		return debug;
+	}
 
-    public void setDebug(Boolean debug) {
-        this.debug = debug;
-    }
+	public void setDebug(Boolean debug) {
+		this.debug = debug;
+	}
+	
 }
