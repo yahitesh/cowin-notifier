@@ -1,6 +1,7 @@
 package com.yahitesh.endpoint;
 
 public enum CowinEndPoint {
+	FIND_ALL_DISTRICT_BY_ID("https://cdn-api.co-vin.in/api/v2/admin/location/districts/"),
 	CALENDAR_BY_DISTRICT("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict"),
 	CALENDAR_BY_PIN("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin"),
 	FIND_BY_PIN("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin"),
@@ -15,5 +16,5 @@ public enum CowinEndPoint {
 	public String getUrl() {
 		return url;
 	}
-	
+
 }

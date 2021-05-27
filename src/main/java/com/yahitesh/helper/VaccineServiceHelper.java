@@ -51,6 +51,10 @@ public class VaccineServiceHelper {
 		return builder.build().toUri();
 	}
 
+	public String findAllDistrict(String districtId) {
+		return CowinEndPoint.FIND_ALL_DISTRICT_BY_ID.getUrl().concat(districtId);
+	}
+
 	public List<VaccineInfo> vaccineInfoBySession(List<Session> sessionList) {
 		List<VaccineInfo> list = new ArrayList<VaccineInfo>();
 		List<Session> sessionsFilterList = sessionList.stream().filter(s -> s.available_capacity > 0)
@@ -93,13 +97,13 @@ public class VaccineServiceHelper {
 			vaccineInfo.pincode = String.valueOf(center.pincode);
 			Session session = center.sessions.get(0);
 			if (session.min_age_limit == 18) {
-				vaccineInfo.ageLimit = "18 Plus";
+				vaccineInfo.ageLimit = "18-44";
 			} else if (session.min_age_limit == 45) {
-				vaccineInfo.ageLimit = "45 Plus";
+				vaccineInfo.ageLimit = "45+";
 			} else {
 				vaccineInfo.ageLimit = String.valueOf(session.min_age_limit);
 			}
-
+			vaccineInfo.date=session.date;
 			vaccineInfo.availableDose = String.valueOf(session.available_capacity);
 			list.add(vaccineInfo);
 		}
