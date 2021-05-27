@@ -1,7 +1,11 @@
-package com.yahitesh.controller;
+/* Apache License 2.0
+ * A permissive license whose main conditions require preservation of copyright and license notices.
+ * Contributors provide an express grant of patent rights. 
+ * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+ */
 
-import java.util.Arrays;
-import java.util.List;
+package com.yahitesh.cowin.controller;
+
 import java.util.Map;
 
 import javax.transaction.Transactional;
@@ -14,19 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yahitesh.config.NotificationHolder;
-import com.yahitesh.model.Email;
 import com.yahitesh.model.Notification;
-import com.yahitesh.model.VaccineInfo;
 import com.yahitesh.repository.NotificationRepository;
-import com.yahitesh.services.EmailServiceImpl;
-import com.yahitesh.services.VaccineService;
 
+/**
+ * @author yaHitesh
+ * @since 1.0.0
+ */
 @Controller
 @RequestMapping("/cowin")
 public class CowinController {
-
-	@Autowired
-	private EmailServiceImpl emailServiceImpl;
 
 	@Autowired
 	private NotificationRepository notificationRepository;
@@ -41,7 +42,8 @@ public class CowinController {
 
 	@PostMapping("/notify")
 	@Transactional
-	public String viewFilter(@RequestParam("email") String email, @RequestParam("pincode") String pincode,Map<String, Object> model) {
+	public String viewFilter(@RequestParam("email") String email, @RequestParam("pincode") String pincode,
+			Map<String, Object> model) {
 		Notification exist = notificationRepository.findByEmail(email);
 		String message;
 		if (null != exist) {
@@ -49,7 +51,7 @@ public class CowinController {
 			exist.setNotify("N");
 			notificationRepository.save(exist);
 			notificationHolder.updateRecord(exist);
-			message = "Your "+pincode+" pincode is updated for notification";
+			message = "Your " + pincode + " pincode is updated for notification";
 		} else {
 			Notification notification = new Notification();
 			notification.setEmail(email);
@@ -57,21 +59,10 @@ public class CowinController {
 			notification.setNotify("N");
 			notificationRepository.save(notification);
 			notificationHolder.saveRecord(notification);
-			message = "You will recive notification on "+pincode;
+			message = "You will recive notification on " + pincode;
 		}
 		model.put("message", message);
 		return "index";
 	}
 
-	@GetMapping("/greeting")
-	public Email greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		List<VaccineInfo> info = new VaccineService().calendarByDistrict("644", "25-05-21");
-		Email email = new Email();
-		email.setRecipients(Arrays.asList("classyprashant@gmail.com"));
-		email.setSubject("test");
-		email.setBody(info.toString());
-		emailServiceImpl.sendSimpleMessage(email);
-		System.out.println("email send");
-		return new Email();
-	}
 }

@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.yahitesh.config.NotificationHolder;
-import com.yahitesh.endpoint.State;
+import com.yahitesh.cowin.constant.State;
 import com.yahitesh.model.Email;
 import com.yahitesh.model.Notification;
 import com.yahitesh.model.StateData.District;

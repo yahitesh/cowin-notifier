@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.yahitesh.endpoint.CowinEndPoint;
+import com.yahitesh.cowin.constant.CowinApiEndPoint;
 import com.yahitesh.model.Center;
 import com.yahitesh.model.Session;
 import com.yahitesh.model.VaccineInfo;
@@ -28,31 +28,31 @@ public class VaccineServiceHelper {
 	}
 
 	public URI findByPinUri(String pincode, String date) {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinEndPoint.FIND_BY_PIN.getUrl())
+		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinApiEndPoint.FIND_BY_PIN.getUrl())
 				.queryParam("pincode", pincode).queryParam("date", date);
 		return builder.build().toUri();
 	}
 
 	public URI findByDistrictUri(String pincode, String date) {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinEndPoint.FIND_BY_DISTRICT.getUrl())
+		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinApiEndPoint.FIND_BY_DISTRICT.getUrl())
 				.queryParam("district_id", pincode).queryParam("date", date);
 		return builder.build().toUri();
 	}
 
 	public URI calendarByDistrictUri(String districtId, String date) {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinEndPoint.CALENDAR_BY_DISTRICT.getUrl())
+		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinApiEndPoint.CALENDAR_BY_DISTRICT.getUrl())
 				.queryParam("district_id", districtId).queryParam("date", date);
 		return builder.build().toUri();
 	}
 
 	public URI calendarByPinUri(String pincode, String date) {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinEndPoint.CALENDAR_BY_PIN.getUrl())
+		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinApiEndPoint.CALENDAR_BY_PIN.getUrl())
 				.queryParam("pincode", pincode).queryParam("date", date);
 		return builder.build().toUri();
 	}
 
 	public String findAllDistrict(String districtId) {
-		return CowinEndPoint.FIND_ALL_DISTRICT_BY_ID.getUrl().concat(districtId);
+		return CowinApiEndPoint.FIND_ALL_DISTRICT_BY_ID.getUrl().concat(districtId);
 	}
 
 	public List<VaccineInfo> vaccineInfoBySession(List<Session> sessionList) {
