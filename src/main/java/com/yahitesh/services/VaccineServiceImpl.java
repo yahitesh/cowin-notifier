@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.yahitesh.helper.VaccineServiceHelper;
@@ -24,6 +25,7 @@ import com.yahitesh.model.VaccineInfo;
  * @author yaHitesh
  * @since 1.0.0
  */
+@Service
 public class VaccineServiceImpl implements VaccineService {
 
 	@Autowired

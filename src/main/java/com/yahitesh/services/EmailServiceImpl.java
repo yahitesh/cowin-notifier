@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
 
 import com.yahitesh.model.Email;
 
@@ -18,6 +19,7 @@ import com.yahitesh.model.Email;
  * @author yaHitesh
  * @since 1.0.0
  */
+@Service
 public class EmailServiceImpl implements EmailService {
 
 	@Autowired

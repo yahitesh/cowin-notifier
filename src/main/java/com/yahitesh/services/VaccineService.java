@@ -8,16 +8,13 @@ package com.yahitesh.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.yahitesh.model.VaccineInfo;
 import com.yahitesh.model.StateData.District;
+import com.yahitesh.model.VaccineInfo;
 
 /**
  * @author yaHitesh
  * @since 1.0.0
  */
-@Service
 public interface VaccineService {
 	
 	List<VaccineInfo> calendarByDistrict(String districtId, String date);

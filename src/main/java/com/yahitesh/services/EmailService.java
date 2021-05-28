@@ -6,15 +6,12 @@
 
 package com.yahitesh.services;
 
-import org.springframework.stereotype.Service;
-
 import com.yahitesh.model.Email;
 
 /**
  * @author yaHitesh
  * @since 1.0.0
  */
-@Service
 public interface EmailService {
 	
 	Boolean sendSimpleMessage(Email email);
