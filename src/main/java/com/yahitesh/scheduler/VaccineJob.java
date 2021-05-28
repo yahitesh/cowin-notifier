@@ -64,6 +64,7 @@ public class VaccineJob {
 				.collect(Collectors.toList()).forEach(pincode -> {
 					List<VaccineInfo> vaccineList = vaccineService.calendarByPin(pincode,
 							Constant.DATE_FORMAT.format(new Date()));
+					System.out.println(vaccineList);
 					List<Notification> userList = notifications.stream().filter(p -> p.getPincodes().equals(pincode))
 							.collect(Collectors.toList());
 					if (!vaccineList.isEmpty()) {

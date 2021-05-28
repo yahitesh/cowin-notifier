@@ -47,7 +47,6 @@ public class VaccineServiceImpl implements VaccineService {
 	public List<VaccineInfo> calendarByPin(String pincode, String date) {
 		ResponseEntity<CenterData> res = restTemplate.exchange(vaccineServiceHelper.calendarByPinUri(pincode, date),
 				HttpMethod.GET, VaccineServiceHelper.buildHttpEntity(), CenterData.class);
-		System.out.println(res.getBody());
 		List<VaccineInfo> list = vaccineServiceHelper.vaccineInfoByCenter(res.getBody().getCenters());
 		return list;
 	}

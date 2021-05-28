@@ -37,7 +37,6 @@ public class PortalServiceLifeCycle implements CommandLineRunner {
 		System.out.println("***START COWIN NOTIFIRE***");
 		List<Notification> list = notificationHolder.readFromFile();
 		notificationRepository.saveAll(list);
-		System.out.println("found::" + notificationRepository.findAll());
 	}
 
 	@PreDestroy
