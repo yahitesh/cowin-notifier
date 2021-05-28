@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.yahitesh.config.NotificationHolder;
+import com.yahitesh.config.InMemoryDbServiceImpl;
 import com.yahitesh.model.Notification;
 import com.yahitesh.repository.NotificationRepository;
 
@@ -33,7 +33,7 @@ public class CowinController {
 	private NotificationRepository notificationRepository;
 
 	@Autowired
-	private NotificationHolder notificationHolder;
+	private InMemoryDbServiceImpl notificationHolder;
 
 	@GetMapping("/home")
 	public String home() {

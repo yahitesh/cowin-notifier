@@ -1,5 +1,15 @@
+/* Apache License 2.0
+ * A permissive license whose main conditions require preservation of copyright and license notices.
+ * Contributors provide an express grant of patent rights. 
+ * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+ */
+
 package com.yahitesh.helper;
 
+/**
+ * @author yaHitesh
+ * @since 1.0.0
+ */
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,45 +19,48 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.yahitesh.cowin.constant.Constant;
 import com.yahitesh.cowin.constant.CowinApiEndPoint;
-import com.yahitesh.model.Center;
-import com.yahitesh.model.Session;
+import com.yahitesh.model.CenterData.Center;
+import com.yahitesh.model.SessionData.Session;
 import com.yahitesh.model.VaccineInfo;
 
+@Component
 public class VaccineServiceHelper {
 
 	public static HttpEntity<String> buildHttpEntity() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		headers.add("user-agent",
-				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-		return new HttpEntity<String>("parameters", headers);
+		headers.add(Constant.USER_AGENT_KEY, Constant.USER_AGENT_VALUE);
+		return new HttpEntity<String>(Constant.PARAM_PARAMETERS, headers);
 	}
 
 	public URI findByPinUri(String pincode, String date) {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinApiEndPoint.FIND_BY_PIN.getUrl())
-				.queryParam("pincode", pincode).queryParam("date", date);
+				.queryParam(Constant.PARAM_PINCODE, pincode).queryParam(Constant.PARAM_DATE, date);
 		return builder.build().toUri();
 	}
 
 	public URI findByDistrictUri(String pincode, String date) {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinApiEndPoint.FIND_BY_DISTRICT.getUrl())
-				.queryParam("district_id", pincode).queryParam("date", date);
+				.queryParam(Constant.PARAM_DISTRICT_ID, pincode).queryParam(Constant.PARAM_DATE, date);
 		return builder.build().toUri();
 	}
 
 	public URI calendarByDistrictUri(String districtId, String date) {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinApiEndPoint.CALENDAR_BY_DISTRICT.getUrl())
-				.queryParam("district_id", districtId).queryParam("date", date);
+		UriComponentsBuilder builder = UriComponentsBuilder
+				.fromUriString(CowinApiEndPoint.CALENDAR_BY_DISTRICT.getUrl())
+				.queryParam(Constant.PARAM_DISTRICT_ID, districtId).queryParam(Constant.PARAM_DATE, date);
 		return builder.build().toUri();
 	}
 
 	public URI calendarByPinUri(String pincode, String date) {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(CowinApiEndPoint.CALENDAR_BY_PIN.getUrl())
-				.queryParam("pincode", pincode).queryParam("date", date);
+				.queryParam(Constant.PARAM_PINCODE, pincode).queryParam(Constant.PARAM_DATE, date);
 		return builder.build().toUri();
 	}
 
@@ -57,58 +70,42 @@ public class VaccineServiceHelper {
 
 	public List<VaccineInfo> vaccineInfoBySession(List<Session> sessionList) {
 		List<VaccineInfo> list = new ArrayList<VaccineInfo>();
-		List<Session> sessionsFilterList = sessionList.stream().filter(s -> s.available_capacity > 0)
-				.collect(Collectors.toList());
-		for (Session session : sessionsFilterList) {
-			VaccineInfo vaccineInfo = new VaccineInfo();
-			vaccineInfo.name = session.name;
-			vaccineInfo.address = session.address;
-			vaccineInfo.stateName = session.state_name;
-			vaccineInfo.districtName = session.district_name;
-			vaccineInfo.blockName = session.block_name;
-			vaccineInfo.pincode = String.valueOf(session.pincode);
-			if (session.min_age_limit == 18) {
-				vaccineInfo.ageLimit = "18 Plus";
-			} else if (session.min_age_limit == 45) {
-				vaccineInfo.ageLimit = "45 Plus";
-			} else {
-				vaccineInfo.ageLimit = String.valueOf(session.min_age_limit);
-			}
-
-			vaccineInfo.availableDose = String.valueOf(session.available_capacity);
-			list.add(vaccineInfo);
-		}
-		System.out.println("list::" + list);
+		sessionList.stream().filter(s -> s.getAvailable_capacity() > 0).collect(Collectors.toList())
+				.forEach(session -> {
+					list.add(VaccineInfo.builder().name(session.getName()).address(session.getAddress())
+							.stateName(session.getState_name()).districtName(session.getDistrict_name())
+							.blockName(session.getBlock_name()).pincode(String.valueOf(session.getPincode()))
+							.ageLimit(getAgeLimitMsg(session.getMin_age_limit()))
+							.availableDose(String.valueOf(session.getAvailable_capacity())).date(session.getDate())
+							.build());
+				});
 		return list;
 	}
 
 	public List<VaccineInfo> vaccineInfoByCenter(List<Center> centerList) {
 		List<VaccineInfo> list = new ArrayList<VaccineInfo>();
-		List<Center> centerFilterList = centerList.stream()
-				.filter(s -> !CollectionUtils.isEmpty(s.sessions) && s.sessions.get(0).available_capacity > 0)
-				.collect(Collectors.toList());
-		for (Center center : centerFilterList) {
-			VaccineInfo vaccineInfo = new VaccineInfo();
-			vaccineInfo.name = center.name;
-			vaccineInfo.address = center.address;
-			vaccineInfo.stateName = center.state_name;
-			vaccineInfo.districtName = center.district_name;
-			vaccineInfo.blockName = center.block_name;
-			vaccineInfo.pincode = String.valueOf(center.pincode);
-			Session session = center.sessions.get(0);
-			if (session.min_age_limit == 18) {
-				vaccineInfo.ageLimit = "18-44";
-			} else if (session.min_age_limit == 45) {
-				vaccineInfo.ageLimit = "45+";
-			} else {
-				vaccineInfo.ageLimit = String.valueOf(session.min_age_limit);
-			}
-			vaccineInfo.date=session.date;
-			vaccineInfo.availableDose = String.valueOf(session.available_capacity);
-			list.add(vaccineInfo);
-		}
-		System.out.println("list::" + list);
+		centerList.stream().filter(
+				s -> !CollectionUtils.isEmpty(s.getSessions()) && s.getSessions().get(0).getAvailable_capacity() > 0)
+				.collect(Collectors.toList()).forEach(center -> {
+					Session session = center.getSessions().get(0);
+					list.add(VaccineInfo.builder().name(center.getName()).address(center.getAddress())
+							.stateName(center.getState_name()).districtName(center.getDistrict_name())
+							.blockName(center.getBlock_name()).pincode(String.valueOf(center.getPincode()))
+							.ageLimit(getAgeLimitMsg(session.getMin_age_limit()))
+							.availableDose(String.valueOf(session.getAvailable_capacity())).date(session.getDate())
+							.build());
+				});
 		return list;
+	}
+
+	private String getAgeLimitMsg(int minAgeLimit) {
+		if (minAgeLimit == 18) {
+			return "18 Plus";
+		} else if (minAgeLimit == 45) {
+			return "45 Plus";
+		} else {
+			return String.valueOf(minAgeLimit);
+		}
 	}
 
 }

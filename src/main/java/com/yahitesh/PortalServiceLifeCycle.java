@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.yahitesh.config.NotificationHolder;
+import com.yahitesh.config.InMemoryDbServiceImpl;
 import com.yahitesh.model.Notification;
 import com.yahitesh.repository.NotificationRepository;
 
@@ -27,7 +27,7 @@ import com.yahitesh.repository.NotificationRepository;
 public class PortalServiceLifeCycle implements CommandLineRunner {
 
 	@Autowired
-	NotificationHolder notificationHolder;
+	InMemoryDbServiceImpl notificationHolder;
 
 	@Autowired
 	NotificationRepository notificationRepository;

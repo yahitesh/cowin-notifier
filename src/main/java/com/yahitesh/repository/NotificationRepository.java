@@ -23,7 +23,7 @@ import com.yahitesh.model.Notification;
 public interface NotificationRepository extends CrudRepository<Notification, Long> {
 
 	@Query("select n from Notification n where n.notify = :notifyFlag order by id")
-	List<Notification> findAllUnNotify(@Param("notifyFlag") String notifyFlag);
+	List<Notification> findByNotify(@Param("notifyFlag") String notifyFlag);
 
 	Notification findByEmail(String email);
 

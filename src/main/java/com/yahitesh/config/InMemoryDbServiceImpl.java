@@ -24,7 +24,7 @@ import com.yahitesh.model.Notification;
  * @since 1.0.0
  */
 @Component
-public class NotificationHolder {
+public class InMemoryDbServiceImpl {
 	
 	private static final String LOCK = "LOCK";
 

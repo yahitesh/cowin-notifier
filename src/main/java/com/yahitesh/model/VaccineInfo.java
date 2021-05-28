@@ -9,9 +9,9 @@ package com.yahitesh.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 /**
  * @author yaHitesh
@@ -21,17 +21,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreType
-@ToString
+@Builder
 public class VaccineInfo {
-	public String name;
-	public String address;
-	public String stateName;
-	public String districtName;
-	public String blockName;
-	public String pincode;
-	public String ageLimit;
-	public String availableDose;
-	public String date;
+
+	private String name;
+	private String address;
+	private String stateName;
+	private String districtName;
+	private String blockName;
+	private String pincode;
+	private String ageLimit;
+	private String availableDose;
+	private String date;
 
 	@Override
 	public String toString() {
