@@ -4,7 +4,7 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.config;
+package com.yahitesh.cowin.config;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,7 +17,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.yahitesh.model.Notification;
+import com.yahitesh.cowin.model.Notification;
 
 /**
  * @author yaHitesh

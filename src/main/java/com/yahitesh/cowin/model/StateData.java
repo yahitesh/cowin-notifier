@@ -1,4 +1,4 @@
-package com.yahitesh.model;
+package com.yahitesh.cowin.model;
 
 import java.util.List;
 

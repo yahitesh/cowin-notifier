@@ -4,7 +4,7 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.services;
+package com.yahitesh.cowin.services;
 
 import java.util.List;
 
@@ -14,12 +14,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.yahitesh.helper.VaccineServiceHelper;
-import com.yahitesh.model.CenterData;
-import com.yahitesh.model.SessionData;
-import com.yahitesh.model.StateData;
-import com.yahitesh.model.StateData.District;
-import com.yahitesh.model.VaccineInfo;
+import com.yahitesh.cowin.helper.VaccineServiceHelper;
+import com.yahitesh.cowin.model.CenterData;
+import com.yahitesh.cowin.model.SessionData;
+import com.yahitesh.cowin.model.StateData;
+import com.yahitesh.cowin.model.VaccineInfo;
+import com.yahitesh.cowin.model.StateData.District;
 
 /**
  * @author yaHitesh

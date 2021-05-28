@@ -4,12 +4,12 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.services;
+package com.yahitesh.cowin.services;
 
 import java.util.List;
 
-import com.yahitesh.model.StateData.District;
-import com.yahitesh.model.VaccineInfo;
+import com.yahitesh.cowin.model.VaccineInfo;
+import com.yahitesh.cowin.model.StateData.District;
 
 /**
  * @author yaHitesh

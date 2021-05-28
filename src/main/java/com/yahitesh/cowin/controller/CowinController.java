@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.yahitesh.config.InMemoryDbServiceImpl;
-import com.yahitesh.model.Notification;
-import com.yahitesh.repository.NotificationRepository;
+import com.yahitesh.cowin.config.InMemoryDbServiceImpl;
+import com.yahitesh.cowin.model.Notification;
+import com.yahitesh.cowin.repository.NotificationRepository;
 
 /**
  * @author yaHitesh

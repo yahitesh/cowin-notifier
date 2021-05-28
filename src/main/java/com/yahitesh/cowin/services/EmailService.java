@@ -4,9 +4,9 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.services;
+package com.yahitesh.cowin.services;
 
-import com.yahitesh.model.Email;
+import com.yahitesh.cowin.model.Email;
 
 /**
  * @author yaHitesh

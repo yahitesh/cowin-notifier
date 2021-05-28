@@ -4,7 +4,7 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.model;
+package com.yahitesh.cowin.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import com.fasterxml.jackson.annotation.JsonProperty;

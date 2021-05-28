@@ -4,7 +4,7 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.repository;
+package com.yahitesh.cowin.repository;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.yahitesh.model.Notification;
+import com.yahitesh.cowin.model.Notification;
 
 /**
  * @author yaHitesh

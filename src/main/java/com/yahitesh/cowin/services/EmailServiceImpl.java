@@ -4,7 +4,7 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.services;
+package com.yahitesh.cowin.services;
 
 import java.util.stream.Collectors;
 
@@ -13,7 +13,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.yahitesh.model.Email;
+import com.yahitesh.cowin.model.Email;
 
 /**
  * @author yaHitesh

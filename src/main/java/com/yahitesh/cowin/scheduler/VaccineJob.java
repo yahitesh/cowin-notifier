@@ -4,7 +4,7 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.scheduler;
+package com.yahitesh.cowin.scheduler;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -17,14 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.yahitesh.config.InMemoryDbServiceImpl;
+import com.yahitesh.cowin.config.InMemoryDbServiceImpl;
 import com.yahitesh.cowin.constant.Constant;
-import com.yahitesh.model.Email;
-import com.yahitesh.model.Notification;
-import com.yahitesh.model.VaccineInfo;
-import com.yahitesh.repository.NotificationRepository;
-import com.yahitesh.services.EmailService;
-import com.yahitesh.services.VaccineService;
+import com.yahitesh.cowin.model.Email;
+import com.yahitesh.cowin.model.Notification;
+import com.yahitesh.cowin.model.VaccineInfo;
+import com.yahitesh.cowin.repository.NotificationRepository;
+import com.yahitesh.cowin.services.EmailService;
+import com.yahitesh.cowin.services.VaccineService;
 
 /**
  * @author yaHitesh

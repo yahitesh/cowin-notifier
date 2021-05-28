@@ -4,7 +4,7 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.helper;
+package com.yahitesh.cowin.helper;
 
 /**
  * @author yaHitesh
@@ -25,9 +25,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.yahitesh.cowin.constant.Constant;
 import com.yahitesh.cowin.constant.CowinApiEndPoint;
-import com.yahitesh.model.CenterData.Center;
-import com.yahitesh.model.SessionData.Session;
-import com.yahitesh.model.VaccineInfo;
+import com.yahitesh.cowin.model.VaccineInfo;
+import com.yahitesh.cowin.model.CenterData.Center;
+import com.yahitesh.cowin.model.SessionData.Session;
 
 @Component
 public class VaccineServiceHelper {
