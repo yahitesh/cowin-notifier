@@ -1,49 +1,41 @@
+/* Apache License 2.0
+ * A permissive license whose main conditions require preservation of copyright and license notices.
+ * Contributors provide an express grant of patent rights. 
+ * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+ */
+
 package com.yahitesh.cowin.model;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+/**
+ * @author yaHitesh
+ * @since 1.0.0
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Builder
 public class StateData {
 
 	private List<District> districts;
 
-	public List<District> getDistricts() {
-		return districts;
-	}
-
-	public void setDistricts(List<District> districts) {
-		this.districts = districts;
-	}
-
+	@Data
+	@AllArgsConstructor
+	@NoArgsConstructor
+	@ToString
+	@Builder
 	public static class District {
 		private int district_id;
 		private String district_name;
 
-		public int getDistrict_id() {
-			return district_id;
-		}
-
-		public void setDistrict_id(int district_id) {
-			this.district_id = district_id;
-		}
-
-		public String getDistrict_name() {
-			return district_name;
-		}
-
-		public void setDistrict_name(String district_name) {
-			this.district_name = district_name;
-		}
-
-		@Override
-		public String toString() {
-			return "District [district_id=" + district_id + ", district_name=" + district_name + "]";
-		}
-
-	}
-
-	@Override
-	public String toString() {
-		return "StateData [districts=" + districts + "]";
 	}
 
 }

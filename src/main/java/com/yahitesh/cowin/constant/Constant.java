@@ -24,5 +24,7 @@ public class Constant {
 	public static final String FLAG_Y = "Y";
 	public static final String FLAG_N = "N";
 	public static final String EMAIL_SUBJECT = "Covid19 Dose Notification";
-	
+	public static final String AGE_18_44 = "18-44";
+	public static final String AGE_45_PLUS = "45+";
+
 }

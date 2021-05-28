@@ -25,9 +25,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.yahitesh.cowin.constant.Constant;
 import com.yahitesh.cowin.constant.CowinApiEndPoint;
-import com.yahitesh.cowin.model.VaccineInfo;
 import com.yahitesh.cowin.model.CenterData.Center;
 import com.yahitesh.cowin.model.SessionData.Session;
+import com.yahitesh.cowin.model.VaccineInfo;
 
 @Component
 public class VaccineServiceHelper {
@@ -100,9 +100,9 @@ public class VaccineServiceHelper {
 
 	private String getAgeLimitMsg(int minAgeLimit) {
 		if (minAgeLimit == 18) {
-			return "18 Plus";
+			return Constant.AGE_18_44;
 		} else if (minAgeLimit == 45) {
-			return "45 Plus";
+			return Constant.AGE_45_PLUS;
 		} else {
 			return String.valueOf(minAgeLimit);
 		}
