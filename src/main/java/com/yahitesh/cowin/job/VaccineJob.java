@@ -4,7 +4,7 @@
  * Licensed works, modifications, and larger works may be distributed under different terms and without source code.
  */
 
-package com.yahitesh.cowin.scheduler;
+package com.yahitesh.cowin.job;
 
 import java.util.Arrays;
 import java.util.Date;
