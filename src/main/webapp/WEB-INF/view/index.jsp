@@ -6,7 +6,7 @@
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Cowin Vaccine Notifier</title>
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
